@@ -2,6 +2,7 @@ package cn.hw.object;
 
 import java.util.Comparator;
 import java.util.LinkedList;
+import java.util.List;
 
 public class Vertex {
 
@@ -12,6 +13,14 @@ public class Vertex {
     public Vertex(int val) {
         this.val = val;
         adjacent = new LinkedList<>();
+    }
+
+    public int getVal() {
+        return val;
+    }
+
+    public List<Vertex> getAdjacent() {
+        return adjacent;
     }
 
     /**
@@ -42,8 +51,21 @@ public class Vertex {
         adjacent.sort(new VertexComparator());
     }
 
+    @Override
+    public String toString() {
+
+        StringBuilder sb = new StringBuilder("");
+        sb.append(val);
+        adjacent.forEach((v) -> {
+            sb.append(" ");
+            sb.append(v.val);
+        });
+
+        return sb.toString();
+    }
+
     private int val;
-    private LinkedList<Vertex> adjacent;
+    private List<Vertex> adjacent;
 
     /**
      * Vertex的比较器，用于邻接链表的排序

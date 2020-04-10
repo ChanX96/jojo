@@ -2,8 +2,6 @@ package cn.hw.test;
 
 import cn.hw.io.IOUtils;
 
-import java.util.Arrays;
-
 public class TestIO {
 
     public static void main(String[] args) {
