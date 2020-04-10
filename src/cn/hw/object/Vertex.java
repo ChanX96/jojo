@@ -6,6 +6,9 @@ import java.util.List;
 
 public class Vertex {
 
+    private int val;
+    private List<Vertex> adjacent;
+
     /**
      * 构造方法
      * @param val
@@ -63,9 +66,6 @@ public class Vertex {
 
         return sb.toString();
     }
-
-    private int val;
-    private List<Vertex> adjacent;
 
     /**
      * Vertex的比较器，用于邻接链表的排序

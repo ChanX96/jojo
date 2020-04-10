@@ -1,5 +1,7 @@
 package cn.hw.job;
 
+import cn.hw.graphic.GraphicUtils;
+import cn.hw.io.IOUtils;
 import cn.hw.object.Vertex;
 
 import java.util.Map;
@@ -8,15 +10,6 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 public class Job {
-
-    public Job(String inputPath, String outputPath) {
-        this.inputPath = inputPath;
-        this.outputPath = outputPath;
-    }
-
-    public static boolean waitForComplement(Class<? extends Job> task, String inputPath, String outputPath) {
-        return false;
-    }
 
     private String inputPath;
     private String outputPath;
@@ -34,12 +27,24 @@ public class Job {
                 new LinkedBlockingQueue<Runnable>());
     }
 
+    public Job(String inputPath, String outputPath) {
+        this.inputPath = inputPath;
+        this.outputPath = outputPath;
+    }
+
+    public static boolean waitForComplement(Class<? extends Job> task, String inputPath, String outputPath) {
+        return false;
+    }
+
     /**
      * 第一步，读取数据集
-     * @param inputPath
      */
-    private Map<Integer, Vertex> readDataFile(String inputPath) {
-        return null;
+    private Map<Integer, Vertex> readDataFile() {
+
+        String[] datas = IOUtils.readDataFile(inputPath);
+        Map<Integer, Vertex> graphic = GraphicUtils.buildGraphic(datas);
+
+        return graphic;
     }
 
     /**
